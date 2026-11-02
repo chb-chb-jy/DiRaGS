@@ -1,0 +1,462 @@
+{
+  "kind": "archived_seed42_mranet_pdc_common_pil_results_not_new_inference",
+  "upstream_repository": "https://github.com/hpguo1982/MRANet",
+  "upstream_source_hashes": {
+    "metrics.py": "d79636568e291c7088f53347ceed6c2f0b92d71da9f0721e5d22836df9855c57",
+    "model.py": "937a94ed6a64a07258294020790d73555c94b85b73954d3ef597e7616945e7b5",
+    "pvtv2.py": "bad9a96bca9841679b5f7a5a97bf9bbc4239611fb4be6d0ba0783f64e4f9dc8c",
+    "resnet.py": "889b2db27cb0d78f4c9bae3cba5826c28b85f9e5a636ec76fc10f8e48a006503",
+    "test.py": "8d7f57090827f14982ac3d803acdaa776acc18097c82ec3bc57826d57373628b",
+    "train.py": "d367e78bdc7e9a8742b0a199b35427b01befa13432e85ad1fc96e693705ff423",
+    "utils.py": "2a1d03d37f7513c2e2eccf40bdf1d7de50468495f85bc1b03458f7da0833e024"
+  },
+  "source_bundle_sha256": "b09e26e6ea2d20053be54bde41faf62675f2614a21a30a94325f46f7b8ee0baf",
+  "experiments": {
+    "baseline": {
+      "config": {
+        "augmentation": "released_rotate35_hflip_vflip_coarse_dropout; paper_reports_rotation_hflip_vflip",
+        "automatic_mixed_precision": false,
+        "candidate": "MRANet",
+        "declared_deviations": [
+          "unified comparison budget uses exactly 300 epochs; paper reports maximum 150 and released code uses 500",
+          "fixed Kvasir seed42 800/100/100 replaces contradictory paper split",
+          "source-val IoU uses sigmoid(logit)>=0.5; released validation omitted sigmoid",
+          "best checkpoint uses source-val IoU; no target-domain model selection",
+          "full 300 epochs; released early-stop code is omitted for the unified fixed-budget protocol"
+        ],
+        "early_stopping": false,
+        "epochs": 300,
+        "image_size": 256,
+        "inference_minmax_normalization": false,
+        "inference_output": "single_logit",
+        "inference_threshold": 0.5,
+        "latest_checkpoint_every_epochs": 10,
+        "loss": "released_bce_plus_soft_dice_smooth1",
+        "num_workers": 4,
+        "ood_during_training": false,
+        "optimizer": {
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "epsilon": 1e-08,
+          "learning_rate": 0.0001,
+          "name": "Adam",
+          "weight_decay": 0.0
+        },
+        "physical_batch_size": 16,
+        "preprocessing": "official_opencv_bgr_div255",
+        "protocol": "mranet-kvasir-seed42-formal-v1",
+        "scheduler": {
+          "cooldown": 0,
+          "epsilon": 1e-08,
+          "factor": 0.1,
+          "minimum_learning_rate": 0.0,
+          "mode": "min",
+          "monitor": "source_val_loss",
+          "name": "ReduceLROnPlateau",
+          "patience": 5,
+          "threshold": 0.0001,
+          "threshold_mode": "rel"
+        },
+        "selection_metric": "kvasir_source_val_iou",
+        "selection_mode": "max",
+        "source_dataset": "Kvasir-SEG",
+        "split_seed": 42,
+        "training_seed": 42
+      },
+      "selected_epoch_one_based": 19,
+      "selected_source_val_iou": 0.8663737344741821,
+      "checkpoint_sha256": "ff952e608b9dcd60fd8f12621710fd5fbd9cf465b075b0456fae386b15343044",
+      "state_keys": 958,
+      "source_identity_sha256": "a8a6495c94a8418b76bbdf6f92eccf2b36cd8ccf390e98b37322d5b8056cfe48",
+      "source_split_semantic_sha256": "8c8bc3b881ca7a026f14ed8e0d60075ab2ab766cd198ff1c50778cf14ac423df",
+      "reported_overlap_metrics": [
+        "dice",
+        "iou",
+        "precision",
+        "recall",
+        "mae"
+      ],
+      "domains": {
+        "ClinicDB": {
+          "total": 612,
+          "positive": 612,
+          "negative": 0,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.8353118689365665
+            },
+            "iou": {
+              "mean": 0.7561464567381401
+            },
+            "precision": {
+              "mean": 0.8731846660018632
+            },
+            "recall": {
+              "mean": 0.8552796368155922
+            },
+            "mae": {
+              "mean": 0.030422659481272978
+            }
+          }
+        },
+        "ColonDB": {
+          "total": 380,
+          "positive": 380,
+          "negative": 0,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.6967413031543397
+            },
+            "iou": {
+              "mean": 0.6283665958376357
+            },
+            "precision": {
+              "mean": 0.8747121368442669
+            },
+            "recall": {
+              "mean": 0.7059177888129556
+            },
+            "mae": {
+              "mean": 0.0372395164088199
+            }
+          }
+        },
+        "ETIS": {
+          "total": 196,
+          "positive": 196,
+          "negative": 0,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.5698718572493263
+            },
+            "iou": {
+              "mean": 0.5058190887080466
+            },
+            "precision": {
+              "mean": 0.7122768269827887
+            },
+            "recall": {
+              "mean": 0.6051767194183644
+            },
+            "mae": {
+              "mean": 0.02897698538643973
+            }
+          }
+        },
+        "PolypGen": {
+          "total": 273,
+          "positive": 211,
+          "negative": 62,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.6674059075897326
+            },
+            "iou": {
+              "mean": 0.5878573618782936
+            },
+            "precision": {
+              "mean": 0.8942459042048069
+            },
+            "recall": {
+              "mean": 0.6264617073536133
+            },
+            "mae": {
+              "mean": 0.0512979516485856
+            }
+          }
+        }
+      },
+      "aggregate": {
+        "target_mean": {
+          "dice": 0.6923327342324913,
+          "iou": 0.619547375790529,
+          "precision": 0.8386048835084313,
+          "recall": 0.6982089631001315,
+          "mae": 0.03698427823127955
+        }
+      },
+      "empty62": {
+        "count": 62,
+        "false_positive_image_count": 19,
+        "false_positive_image_rate": 0.3064516129032258,
+        "empty_prediction_count": 43,
+        "predicted_foreground_fraction_mean": 0.028190858902469758,
+        "fp_pixels_mean": 1847.516129032258,
+        "specificity_mean": 0.9718091410975302,
+        "largest_fp_component_mean": 1731.2903225806451,
+        "largest_fp_component_max": 22381,
+        "fp_largest_8cc_area_mean": 1731.3225806451612,
+        "fp_largest_8cc_area_max": 22381,
+        "fp_8cc_count_mean": 0.7258064516129032,
+        "serious_fp_count": 7,
+        "serious_fp_rate": 0.11290322580645161
+      },
+      "csv_sha256": "576bdc7ad393975da86bf1a7408a2de8c3d79ccb4139c204f2e2077170d24ab3",
+      "prediction_npz_sha256": "8fd948134a5f5ab4d135f437413598e478a3cd06f718d3675ebb5c60cb626918",
+      "empty_component_source": "saved_identified_predictions"
+    },
+    "pdc": {
+      "config": {
+        "DST": false,
+        "GCS": false,
+        "augmentation": "released_rotate35_hflip_vflip_coarse_dropout; paper_reports_rotation_hflip_vflip",
+        "automatic_mixed_precision": false,
+        "backward_schedule": "sequential_view_backwards; one_optimizer_step_per_original_batch",
+        "candidate": "MRANet+PDC",
+        "declared_deviations": [
+          "unified comparison budget uses exactly 300 epochs; paper reports maximum 150 and released code uses 500",
+          "fixed Kvasir seed42 800/100/100 replaces contradictory paper split",
+          "source-val IoU uses sigmoid(logit)>=0.5; released validation omitted sigmoid",
+          "best checkpoint uses source-val IoU; no target-domain model selection",
+          "full 300 epochs; released early-stop code is omitted for the unified fixed-budget protocol"
+        ],
+        "early_stopping": false,
+        "epochs": 300,
+        "image_size": 256,
+        "inference_minmax_normalization": false,
+        "inference_output": "single_logit",
+        "inference_threshold": 0.5,
+        "latest_checkpoint_every_epochs": 10,
+        "loss": "released_bce_plus_soft_dice_smooth1",
+        "num_workers": 4,
+        "ood_during_training": false,
+        "optimizer": {
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "epsilon": 1e-08,
+          "learning_rate": 0.0001,
+          "name": "Adam",
+          "weight_decay": 0.0
+        },
+        "pdc": {
+          "bias": [
+            -0.08,
+            0.08
+          ],
+          "gain": [
+            0.8,
+            1.2
+          ],
+          "gamma": [
+            0.8,
+            1.2
+          ],
+          "illumination_amplitude": 0.15,
+          "illumination_grid_size": 4,
+          "implementation": "rpp_v2_d1_directional_copula",
+          "input_adapter": "BGR_to_RGB_apply_frozen_D1_then_RGB_to_BGR; no normalization",
+          "region_support": "original_MRANet_augmented_soft_target_gte_0.5; supervision_unchanged",
+          "rng_bn": "replay_clean_forward_rng; restore_clean_forward_rng_and_BN_after_both_backwards",
+          "sample_identity": "source_image_filename",
+          "sampling_epoch": "one_based_training_epoch_minus_one",
+          "soft_mask_kernel": 31,
+          "soft_mask_passes": 2
+        },
+        "physical_batch_size": 16,
+        "preprocessing": "official_opencv_bgr_div255",
+        "protocol": "mranet-pdc-kvasir-seed42-v1",
+        "scheduler": {
+          "cooldown": 0,
+          "epsilon": 1e-08,
+          "factor": 0.1,
+          "minimum_learning_rate": 0.0,
+          "mode": "min",
+          "monitor": "source_val_loss",
+          "name": "ReduceLROnPlateau",
+          "patience": 5,
+          "threshold": 0.0001,
+          "threshold_mode": "rel"
+        },
+        "selection_metric": "kvasir_source_val_iou",
+        "selection_mode": "max",
+        "source_dataset": "Kvasir-SEG",
+        "split_seed": 42,
+        "training_objective": "0.5*(clean_original_MRANet_loss+pseudo_original_MRANet_loss)",
+        "training_seed": 42
+      },
+      "selected_epoch_one_based": 22,
+      "selected_source_val_iou": 0.8816615200042724,
+      "checkpoint_sha256": "eac70a416f8cdd2775d3c37bbfb3648174d987e1aa58ae24243ec9199def1933",
+      "state_keys": 958,
+      "source_identity_sha256": "a8a6495c94a8418b76bbdf6f92eccf2b36cd8ccf390e98b37322d5b8056cfe48",
+      "source_split_semantic_sha256": "8c8bc3b881ca7a026f14ed8e0d60075ab2ab766cd198ff1c50778cf14ac423df",
+      "reported_overlap_metrics": [
+        "dice",
+        "iou",
+        "precision",
+        "recall",
+        "mae",
+        "boundary_f1",
+        "boundary_iou"
+      ],
+      "domains": {
+        "ClinicDB": {
+          "total": 612,
+          "positive": 612,
+          "negative": 0,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.8406261138136413
+            },
+            "iou": {
+              "mean": 0.7603980601968326
+            },
+            "precision": {
+              "mean": 0.865662932081751
+            },
+            "recall": {
+              "mean": 0.8712565474833588
+            },
+            "mae": {
+              "mean": 0.028671314513761235
+            },
+            "boundary_f1": {
+              "mean": 0.7065098894726881
+            },
+            "boundary_iou": {
+              "mean": 0.5930921135421647
+            }
+          }
+        },
+        "ColonDB": {
+          "total": 380,
+          "positive": 380,
+          "negative": 0,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.7336322630904484
+            },
+            "iou": {
+              "mean": 0.6564671173627523
+            },
+            "precision": {
+              "mean": 0.8512791237825318
+            },
+            "recall": {
+              "mean": 0.7464238339577747
+            },
+            "mae": {
+              "mean": 0.03420900043688322
+            },
+            "boundary_f1": {
+              "mean": 0.60800812340171
+            },
+            "boundary_iou": {
+              "mean": 0.504403528390472
+            }
+          }
+        },
+        "ETIS": {
+          "total": 196,
+          "positive": 196,
+          "negative": 0,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.6932125477463303
+            },
+            "iou": {
+              "mean": 0.608960404871406
+            },
+            "precision": {
+              "mean": 0.7287654167704449
+            },
+            "recall": {
+              "mean": 0.7529477467929531
+            },
+            "mae": {
+              "mean": 0.01656053504165338
+            },
+            "boundary_f1": {
+              "mean": 0.6049080047912421
+            },
+            "boundary_iou": {
+              "mean": 0.5037072880776882
+            }
+          }
+        },
+        "PolypGen": {
+          "total": 273,
+          "positive": 211,
+          "negative": 62,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.6713140638715526
+            },
+            "iou": {
+              "mean": 0.5907964355948712
+            },
+            "precision": {
+              "mean": 0.8261543937890705
+            },
+            "recall": {
+              "mean": 0.634675038885887
+            },
+            "mae": {
+              "mean": 0.052682017828050945
+            },
+            "boundary_f1": {
+              "mean": 0.5150501331247839
+            },
+            "boundary_iou": {
+              "mean": 0.4006222429299492
+            }
+          }
+        }
+      },
+      "aggregate": {
+        "target_mean": {
+          "dice": 0.7346962471304932,
+          "iou": 0.6541555045064655,
+          "precision": 0.8179654666059496,
+          "recall": 0.7513257917799934,
+          "mae": 0.03303071695508719,
+          "boundary_f1": 0.608619037697606,
+          "boundary_iou": 0.5004562932350686
+        }
+      },
+      "empty62": {
+        "count": 62,
+        "false_positive_image_count": 24,
+        "false_positive_image_rate": 0.3870967741935484,
+        "empty_prediction_count": 38,
+        "predicted_foreground_fraction_mean": 0.029059871550529234,
+        "fp_pixels_mean": 1904.467741935484,
+        "specificity_mean": 0.9709401284494708,
+        "largest_fp_component_mean": 1799.532258064516,
+        "largest_fp_component_max": 27519,
+        "fp_largest_8cc_area_mean": 1799.532258064516,
+        "fp_largest_8cc_area_max": 27519,
+        "fp_8cc_count_mean": 0.6451612903225806,
+        "serious_fp_count": 8,
+        "serious_fp_rate": 0.12903225806451613
+      },
+      "csv_sha256": "27d9aa02c908908c76511495ad3e9661bd0bdccd3eaf7f3d81dd03e2393dfcfd",
+      "prediction_npz_sha256": "df2ec7893cda9b3d90b3a39936c23e4929d6cf359eab45a4982341e3a7421d58",
+      "empty_component_source": "CSV_and_saved_identified_predictions"
+    }
+  },
+  "macro_delta_pp": {
+    "dice": 4.236351289800188,
+    "iou": 3.460812871593655
+  },
+  "empty62_comparison": {
+    "ordinary": {
+      "introduced": 13,
+      "resolved": 8,
+      "persistent": 11,
+      "clear": 30,
+      "net_change": 5
+    },
+    "serious": {
+      "introduced": 5,
+      "resolved": 4,
+      "persistent": 3,
+      "clear": 50,
+      "net_change": 1
+    }
+  }
+}

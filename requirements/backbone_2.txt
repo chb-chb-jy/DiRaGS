@@ -1,0 +1,4 @@
+# Install after the selected core environment. See docs/cross_backbone.md for
+# the separate OpenCV install that retains the captured NumPy version.
+timm==1.0.20
+PyYAML==6.0.2

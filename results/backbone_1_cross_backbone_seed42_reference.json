@@ -1,0 +1,622 @@
+{
+  "kind": "archived_seed42_pranet_pdc_results_not_rerun_during_packaging",
+  "upstream_repository": "https://github.com/DengPingFan/PraNet",
+  "upstream_commit": "95f12bd4e32ec954b5069654abae7de9473fd1f5",
+  "source_bundle_sha256": "fded5f487a19fe1ecd02a98718aaaaeadf6948599a48b1610bb523a4aebe3cc1",
+  "experiments": {
+    "baseline": {
+      "config": {
+        "automatic_mixed_precision": false,
+        "basic_preprocessing": "frozen_bampolyp_v1_imagenet_binary_mask",
+        "candidate": "PraNet",
+        "early_stopping": false,
+        "epochs": 300,
+        "gradient_clip": {
+          "margin": 0.5,
+          "name": "official_elementwise_clamp"
+        },
+        "image_size": 256,
+        "inference_minmax_normalization": false,
+        "inference_output": "lateral_map_2",
+        "inference_threshold": 0.5,
+        "latest_checkpoint_every_epochs": 10,
+        "loss": "locked_official_structure_loss_legacy_reduce_four_outputs_sum",
+        "num_workers": 4,
+        "ood_during_training": false,
+        "optimizer": {
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "epsilon": 1e-08,
+          "learning_rate": 0.0001,
+          "name": "Adam",
+          "weight_decay": 0.0
+        },
+        "optimizer_steps_per_minibatch": 3,
+        "physical_batch_size": 4,
+        "pretrained_sha256": "3cf99910a0f1a4c9c43e707958179bf928b9cc81ed9297dc960fe07d1c46139c",
+        "protocol": "pranet-kvasir-seed42-formal-v1",
+        "scheduler": {
+          "apply_at": "epoch_start",
+          "decay_epoch": 50,
+          "decay_rate": 0.1,
+          "epoch_numbering": "one_based",
+          "formula": "initial_lr * decay_rate ** (epoch // decay_epoch)",
+          "name": "initial_lr_based_step_decay",
+          "upstream_fix": "replace_compounding_lr_multiply_with_initial_lr_assignment"
+        },
+        "selection_metric": "kvasir_source_val_iou",
+        "selection_mode": "max",
+        "source_dataset": "Kvasir-SEG",
+        "split_seed": 42,
+        "training_seed": 42,
+        "training_sizes": [
+          192,
+          256,
+          320
+        ]
+      },
+      "selected_epoch_one_based": 63,
+      "selected_source_val_iou": 0.8692598086595535,
+      "checkpoint_sha256": "d233206185b1a1a2ec2b7272b02ad4b855b4e5f4ca111c66a49b1f483ff34828",
+      "state_keys": 922,
+      "source_split_semantic_sha256": "8c8bc3b881ca7a026f14ed8e0d60075ab2ab766cd198ff1c50778cf14ac423df",
+      "domains": {
+        "ClinicDB": {
+          "total": 612,
+          "positive": 612,
+          "negative": 0,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.8181966598169228,
+              "std": 0.24540323484104692
+            },
+            "iou": {
+              "mean": 0.7445742348462736,
+              "std": 0.25581751853990814
+            },
+            "precision": {
+              "mean": 0.890351870086925,
+              "std": 0.14228222141136423
+            },
+            "recall": {
+              "mean": 0.8367316530164696,
+              "std": 0.2719765475296892
+            },
+            "mae": {
+              "mean": 0.026100507748672386,
+              "std": 0.04244319284596117
+            },
+            "boundary_f1": {
+              "mean": 0.6944452297300732,
+              "std": 0.25469351603302304
+            },
+            "boundary_iou": {
+              "mean": 0.5835509738752688,
+              "std": 0.2707984957886634
+            }
+          },
+          "negative_metrics": {}
+        },
+        "ColonDB": {
+          "total": 380,
+          "positive": 380,
+          "negative": 0,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.6667641758732303,
+              "std": 0.373246808846279
+            },
+            "iou": {
+              "mean": 0.5983794993029855,
+              "std": 0.3538595567455327
+            },
+            "precision": {
+              "mean": 0.876076909101061,
+              "std": 0.16742883260617242
+            },
+            "recall": {
+              "mean": 0.6906577378279207,
+              "std": 0.40049648927953424
+            },
+            "mae": {
+              "mean": 0.04124374389648437,
+              "std": 0.09340279164396703
+            },
+            "boundary_f1": {
+              "mean": 0.551164707269712,
+              "std": 0.33412392262876917
+            },
+            "boundary_iou": {
+              "mean": 0.4503199356444463,
+              "std": 0.30889521186710484
+            }
+          },
+          "negative_metrics": {}
+        },
+        "ETIS": {
+          "total": 196,
+          "positive": 196,
+          "negative": 0,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.6380151843640626,
+              "std": 0.38133759251079463
+            },
+            "iou": {
+              "mean": 0.5678902818463839,
+              "std": 0.35851642190947425
+            },
+            "precision": {
+              "mean": 0.7834566772478428,
+              "std": 0.2670675465815614
+            },
+            "recall": {
+              "mean": 0.692991232925734,
+              "std": 0.414587300161522
+            },
+            "mae": {
+              "mean": 0.01775328967036033,
+              "std": 0.024378088237981186
+            },
+            "boundary_f1": {
+              "mean": 0.5725343075738999,
+              "std": 0.36152754504445356
+            },
+            "boundary_iou": {
+              "mean": 0.48717097858992015,
+              "std": 0.34620439434607536
+            }
+          },
+          "negative_metrics": {}
+        },
+        "PolypGen": {
+          "total": 273,
+          "positive": 211,
+          "negative": 62,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.5925407141600084,
+              "std": 0.37118176870973857
+            },
+            "iou": {
+              "mean": 0.513578561251051,
+              "std": 0.35607164397402224
+            },
+            "precision": {
+              "mean": 0.8803631938213604,
+              "std": 0.20895007092637483
+            },
+            "recall": {
+              "mean": 0.5817265663057483,
+              "std": 0.4002595905573277
+            },
+            "mae": {
+              "mean": 0.058239760557057166,
+              "std": 0.07717104784810914
+            },
+            "boundary_f1": {
+              "mean": 0.4472380795910264,
+              "std": 0.3191548141364548
+            },
+            "boundary_iou": {
+              "mean": 0.34599317584779843,
+              "std": 0.28653398382975537
+            }
+          },
+          "negative_metrics": {
+            "false_positive_image_rate": 0.16129032258064516,
+            "predicted_foreground_fraction_mean": 0.02312469482421875,
+            "fp_pixels_mean": 1515.5,
+            "specificity_mean": 0.9768753051757812,
+            "largest_fp_component_mean": 1514.241935483871,
+            "largest_fp_component_max": 35423.0,
+            "fp_largest_8cc_area_mean": 1514.241935483871,
+            "fp_8cc_count_mean": 0.22580645161290322,
+            "serious_fp_count": 4,
+            "serious_fp_rate": 0.06451612903225806
+          }
+        }
+      },
+      "aggregate": {
+        "domain_count": 4,
+        "target_mean": {
+          "dice": 0.678879183553556,
+          "iou": 0.6061056443116735,
+          "precision": 0.8575621625642973,
+          "recall": 0.7005267975189681,
+          "mae": 0.035834325468143566,
+          "boundary_f1": 0.5663455810411778,
+          "boundary_iou": 0.4667587659893584
+        },
+        "worst_domain": {
+          "dice": {
+            "dataset": "PolypGen",
+            "value": 0.5925407141600084
+          },
+          "iou": {
+            "dataset": "PolypGen",
+            "value": 0.513578561251051
+          },
+          "precision": {
+            "dataset": "ETIS",
+            "value": 0.7834566772478428
+          },
+          "recall": {
+            "dataset": "PolypGen",
+            "value": 0.5817265663057483
+          },
+          "mae": {
+            "dataset": "PolypGen",
+            "value": 0.058239760557057166
+          },
+          "boundary_f1": {
+            "dataset": "PolypGen",
+            "value": 0.4472380795910264
+          },
+          "boundary_iou": {
+            "dataset": "PolypGen",
+            "value": 0.34599317584779843
+          }
+        },
+        "domain_variance": {
+          "dice": 0.007170082582616898,
+          "iou": 0.007313729727348707,
+          "precision": 0.0018573676847782202,
+          "recall": 0.008204860167583502,
+          "mae": 0.00023823409804325096,
+          "boundary_f1": 0.007716219040119557,
+          "boundary_iou": 0.007227910287866072
+        }
+      },
+      "empty62": {
+        "count": 62,
+        "false_positive_image_count": 10,
+        "false_positive_image_rate": 0.16129032258064516,
+        "empty_prediction_count": 52,
+        "predicted_foreground_fraction_mean": 0.02312469482421875,
+        "fp_pixels_mean": 1515.5,
+        "specificity_mean": 0.9768753051757812,
+        "largest_fp_component_mean": 1514.241935483871,
+        "largest_fp_component_max": 35423,
+        "fp_largest_8cc_area_mean": 1514.241935483871,
+        "fp_largest_8cc_area_max": 35423,
+        "fp_8cc_count_mean": 0.22580645161290322,
+        "serious_fp_count": 4,
+        "serious_fp_rate": 0.06451612903225806
+      },
+      "csv_sha256": "bab87846c7f9b9252892e52ee4e6536b861480fa940fb44ef7e305f6f1f90d05"
+    },
+    "pdc": {
+      "config": {
+        "automatic_mixed_precision": false,
+        "basic_preprocessing": "frozen_bampolyp_v1_imagenet_binary_mask",
+        "candidate": "PraNet+PDC",
+        "early_stopping": false,
+        "epochs": 300,
+        "gradient_clip": {
+          "margin": 0.5,
+          "name": "official_elementwise_clamp"
+        },
+        "image_size": 256,
+        "inference_minmax_normalization": false,
+        "inference_output": "lateral_map_2",
+        "inference_threshold": 0.5,
+        "latest_checkpoint_every_epochs": 10,
+        "loss": "locked_official_structure_loss_legacy_reduce_four_outputs_sum",
+        "num_workers": 4,
+        "ood_during_training": false,
+        "optimizer": {
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "epsilon": 1e-08,
+          "learning_rate": 0.0001,
+          "name": "Adam",
+          "weight_decay": 0.0
+        },
+        "optimizer_steps_per_minibatch": 3,
+        "pdc": {
+          "generation": "hard_mask_base256_then_same_multiscale_resize",
+          "implementation": "rpp_v2_d1_directional_copula",
+          "parameters": {
+            "bias": [
+              -0.08,
+              0.08
+            ],
+            "gain": [
+              0.8,
+              1.2
+            ],
+            "gamma": [
+              0.8,
+              1.2
+            ],
+            "illumination_amplitude": 0.15,
+            "illumination_grid_size": 4,
+            "soft_mask_kernel": 31,
+            "soft_mask_passes": 2
+          },
+          "rng_bn": "replay_clean_rng_restore_clean_bn_after_backward",
+          "sample_identity": "source_image_filename",
+          "sampling_epoch": "one_based_training_epoch_minus_one"
+        },
+        "physical_batch_size": 4,
+        "pretrained_sha256": "3cf99910a0f1a4c9c43e707958179bf928b9cc81ed9297dc960fe07d1c46139c",
+        "protocol": "pranet-pdc-kvasir-seed42-exploration-v1",
+        "scheduler": {
+          "apply_at": "epoch_start",
+          "decay_epoch": 50,
+          "decay_rate": 0.1,
+          "epoch_numbering": "one_based",
+          "formula": "initial_lr * decay_rate ** (epoch // decay_epoch)",
+          "name": "initial_lr_based_step_decay",
+          "upstream_fix": "replace_compounding_lr_multiply_with_initial_lr_assignment"
+        },
+        "selection_metric": "kvasir_source_val_iou",
+        "selection_mode": "max",
+        "source_dataset": "Kvasir-SEG",
+        "split_seed": 42,
+        "training_objective": "0.5*(clean_original_PraNet_loss+pseudo_original_PraNet_loss)",
+        "training_seed": 42,
+        "training_sizes": [
+          192,
+          256,
+          320
+        ]
+      },
+      "selected_epoch_one_based": 118,
+      "selected_source_val_iou": 0.8684108702838421,
+      "checkpoint_sha256": "90a2eaf9eb11063e568efe424f7e0858e477ac4c1c68be0ac7c9a9bd8a802d6b",
+      "state_keys": 922,
+      "source_split_semantic_sha256": "8c8bc3b881ca7a026f14ed8e0d60075ab2ab766cd198ff1c50778cf14ac423df",
+      "domains": {
+        "ClinicDB": {
+          "total": 612,
+          "positive": 612,
+          "negative": 0,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.8546977420013872,
+              "std": 0.1922786318585989
+            },
+            "iou": {
+              "mean": 0.7813529821371773,
+              "std": 0.2129067691416275
+            },
+            "precision": {
+              "mean": 0.8836059765666361,
+              "std": 0.14446474711670032
+            },
+            "recall": {
+              "mean": 0.8850840715290405,
+              "std": 0.20919748189831358
+            },
+            "mae": {
+              "mean": 0.024166256773705576,
+              "std": 0.04292893371037958
+            },
+            "boundary_f1": {
+              "mean": 0.7223200071762418,
+              "std": 0.22963690424693514
+            },
+            "boundary_iou": {
+              "mean": 0.6105741206537177,
+              "std": 0.2566129482689302
+            }
+          },
+          "negative_metrics": {}
+        },
+        "ColonDB": {
+          "total": 380,
+          "positive": 380,
+          "negative": 0,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.7270771505765962,
+              "std": 0.32638783413262534
+            },
+            "iou": {
+              "mean": 0.6517957788059723,
+              "std": 0.3180401954962521
+            },
+            "precision": {
+              "mean": 0.8377611669957904,
+              "std": 0.22508762489161122
+            },
+            "recall": {
+              "mean": 0.7628167594948714,
+              "std": 0.3416302899347335
+            },
+            "mae": {
+              "mean": 0.03488480417351974,
+              "std": 0.07200807335594987
+            },
+            "boundary_f1": {
+              "mean": 0.596387249333902,
+              "std": 0.3239211073103649
+            },
+            "boundary_iou": {
+              "mean": 0.4956994523300828,
+              "std": 0.31225544500958
+            }
+          },
+          "negative_metrics": {}
+        },
+        "ETIS": {
+          "total": 196,
+          "positive": 196,
+          "negative": 0,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.6488458589207875,
+              "std": 0.35060939252357765
+            },
+            "iou": {
+              "mean": 0.5680187910600804,
+              "std": 0.3421822878014312
+            },
+            "precision": {
+              "mean": 0.6289532473889464,
+              "std": 0.34651022271196
+            },
+            "recall": {
+              "mean": 0.8234599390294407,
+              "std": 0.32915395657693497
+            },
+            "mae": {
+              "mean": 0.03623238388372927,
+              "std": 0.06543963437307666
+            },
+            "boundary_f1": {
+              "mean": 0.574761629458368,
+              "std": 0.33354766587281137
+            },
+            "boundary_iou": {
+              "mean": 0.47929656952379807,
+              "std": 0.3330388306495766
+            }
+          },
+          "negative_metrics": {}
+        },
+        "PolypGen": {
+          "total": 273,
+          "positive": 211,
+          "negative": 62,
+          "positive_metrics": {
+            "dice": {
+              "mean": 0.6567352883328571,
+              "std": 0.345591690664007
+            },
+            "iou": {
+              "mean": 0.576390603360885,
+              "std": 0.34486995278120125
+            },
+            "precision": {
+              "mean": 0.8397854836366745,
+              "std": 0.2610048639123061
+            },
+            "recall": {
+              "mean": 0.6484870410664119,
+              "std": 0.3584681912016341
+            },
+            "mae": {
+              "mean": 0.060797741062833234,
+              "std": 0.08468177827431277
+            },
+            "boundary_f1": {
+              "mean": 0.4940647398587679,
+              "std": 0.3207942743470819
+            },
+            "boundary_iou": {
+              "mean": 0.3910799260990944,
+              "std": 0.30021961589364843
+            }
+          },
+          "negative_metrics": {
+            "false_positive_image_rate": 0.4838709677419355,
+            "predicted_foreground_fraction_mean": 0.10351217946698589,
+            "fp_pixels_mean": 6783.774193548387,
+            "specificity_mean": 0.8964878205330141,
+            "largest_fp_component_mean": 6749.532258064516,
+            "largest_fp_component_max": 40779.0,
+            "fp_largest_8cc_area_mean": 6749.532258064516,
+            "fp_8cc_count_mean": 0.7258064516129032,
+            "serious_fp_count": 18,
+            "serious_fp_rate": 0.2903225806451613
+          }
+        }
+      },
+      "aggregate": {
+        "domain_count": 4,
+        "target_mean": {
+          "dice": 0.721839009957907,
+          "iou": 0.6443895388410288,
+          "precision": 0.7975264686470118,
+          "recall": 0.7799619527799411,
+          "mae": 0.03902029647344695,
+          "boundary_f1": 0.5968834064568199,
+          "boundary_iou": 0.49416251715167325
+        },
+        "worst_domain": {
+          "dice": {
+            "dataset": "ETIS",
+            "value": 0.6488458589207875
+          },
+          "iou": {
+            "dataset": "ETIS",
+            "value": 0.5680187910600804
+          },
+          "precision": {
+            "dataset": "ETIS",
+            "value": 0.6289532473889464
+          },
+          "recall": {
+            "dataset": "PolypGen",
+            "value": 0.6484870410664119
+          },
+          "mae": {
+            "dataset": "PolypGen",
+            "value": 0.060797741062833234
+          },
+          "boundary_f1": {
+            "dataset": "PolypGen",
+            "value": 0.4940647398587679
+          },
+          "boundary_iou": {
+            "dataset": "PolypGen",
+            "value": 0.3910799260990944
+          }
+        },
+        "domain_variance": {
+          "dice": 0.006811343866275538,
+          "iou": 0.0073175458832524035,
+          "precision": 0.009807816977029767,
+          "recall": 0.007630586180231026,
+          "mae": 0.0001799435853539866,
+          "boundary_f1": 0.006698909547626225,
+          "boundary_iou": 0.006100260144161946
+        }
+      },
+      "empty62": {
+        "count": 62,
+        "false_positive_image_count": 30,
+        "false_positive_image_rate": 0.4838709677419355,
+        "empty_prediction_count": 32,
+        "predicted_foreground_fraction_mean": 0.10351217946698589,
+        "fp_pixels_mean": 6783.774193548387,
+        "specificity_mean": 0.8964878205330141,
+        "largest_fp_component_mean": 6749.532258064516,
+        "largest_fp_component_max": 40779,
+        "fp_largest_8cc_area_mean": 6749.532258064516,
+        "fp_largest_8cc_area_max": 40779,
+        "fp_8cc_count_mean": 0.7258064516129032,
+        "serious_fp_count": 18,
+        "serious_fp_rate": 0.2903225806451613
+      },
+      "csv_sha256": "e32eff64a575a39c8e694214e9b1f7632d4e0cb9b64f7e9798e9256df2ec8266"
+    }
+  },
+  "macro_delta_pp": {
+    "dice": 4.295982640435092,
+    "iou": 3.8283894529355322
+  },
+  "empty62_comparison": {
+    "ordinary": {
+      "introduced": 21,
+      "resolved": 1,
+      "persistent": 9,
+      "clear": 31,
+      "net_change": 20
+    },
+    "serious": {
+      "introduced": 14,
+      "resolved": 0,
+      "persistent": 4,
+      "clear": 44,
+      "net_change": 14
+    }
+  }
+}

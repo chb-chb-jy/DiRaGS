@@ -1,0 +1,52 @@
+{
+  "automatic_mixed_precision": false,
+  "basic_preprocessing": "frozen_bampolyp_v1_imagenet_binary_mask",
+  "candidate": "PraNet",
+  "early_stopping": false,
+  "epochs": 300,
+  "gradient_clip": {
+    "margin": 0.5,
+    "name": "official_elementwise_clamp"
+  },
+  "image_size": 256,
+  "inference_minmax_normalization": false,
+  "inference_output": "lateral_map_2",
+  "inference_threshold": 0.5,
+  "latest_checkpoint_every_epochs": 10,
+  "loss": "locked_official_structure_loss_legacy_reduce_four_outputs_sum",
+  "num_workers": 4,
+  "ood_during_training": false,
+  "optimizer": {
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "learning_rate": 0.0001,
+    "name": "Adam",
+    "weight_decay": 0.0
+  },
+  "optimizer_steps_per_minibatch": 3,
+  "physical_batch_size": 4,
+  "pretrained_sha256": "3cf99910a0f1a4c9c43e707958179bf928b9cc81ed9297dc960fe07d1c46139c",
+  "protocol": "pranet-kvasir-seed42-formal-v1",
+  "scheduler": {
+    "apply_at": "epoch_start",
+    "decay_epoch": 50,
+    "decay_rate": 0.1,
+    "epoch_numbering": "one_based",
+    "formula": "initial_lr * decay_rate ** (epoch // decay_epoch)",
+    "name": "initial_lr_based_step_decay",
+    "upstream_fix": "replace_compounding_lr_multiply_with_initial_lr_assignment"
+  },
+  "selection_metric": "kvasir_source_val_iou",
+  "selection_mode": "max",
+  "source_dataset": "Kvasir-SEG",
+  "split_seed": 42,
+  "training_seed": 42,
+  "training_sizes": [
+    192,
+    256,
+    320
+  ]
+}

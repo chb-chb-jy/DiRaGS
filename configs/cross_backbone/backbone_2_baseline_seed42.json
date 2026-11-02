@@ -1,0 +1,52 @@
+{
+  "augmentation": "released_rotate35_hflip_vflip_coarse_dropout; paper_reports_rotation_hflip_vflip",
+  "automatic_mixed_precision": false,
+  "candidate": "MRANet",
+  "declared_deviations": [
+    "unified comparison budget uses exactly 300 epochs; paper reports maximum 150 and released code uses 500",
+    "fixed Kvasir seed42 800/100/100 replaces contradictory paper split",
+    "source-val IoU uses sigmoid(logit)>=0.5; released validation omitted sigmoid",
+    "best checkpoint uses source-val IoU; no target-domain model selection",
+    "full 300 epochs; released early-stop code is omitted for the unified fixed-budget protocol"
+  ],
+  "early_stopping": false,
+  "epochs": 300,
+  "image_size": 256,
+  "inference_minmax_normalization": false,
+  "inference_output": "single_logit",
+  "inference_threshold": 0.5,
+  "latest_checkpoint_every_epochs": 10,
+  "loss": "released_bce_plus_soft_dice_smooth1",
+  "num_workers": 4,
+  "ood_during_training": false,
+  "optimizer": {
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "learning_rate": 0.0001,
+    "name": "Adam",
+    "weight_decay": 0.0
+  },
+  "physical_batch_size": 16,
+  "preprocessing": "official_opencv_bgr_div255",
+  "protocol": "mranet-kvasir-seed42-formal-v1",
+  "scheduler": {
+    "cooldown": 0,
+    "epsilon": 1e-08,
+    "factor": 0.1,
+    "minimum_learning_rate": 0.0,
+    "mode": "min",
+    "monitor": "source_val_loss",
+    "name": "ReduceLROnPlateau",
+    "patience": 5,
+    "threshold": 0.0001,
+    "threshold_mode": "rel"
+  },
+  "selection_metric": "kvasir_source_val_iou",
+  "selection_mode": "max",
+  "source_dataset": "Kvasir-SEG",
+  "split_seed": 42,
+  "training_seed": 42
+}

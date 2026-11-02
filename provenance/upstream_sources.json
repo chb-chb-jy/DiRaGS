@@ -1,0 +1,112 @@
+{
+  "main": {
+    "display_name": "BAMPolyp",
+    "repository": "https://github.com/farhad324/BAMPolyp",
+    "revision": "bebb67be60b13b4c61c613fe046a920956629548",
+    "file": "bampolyp.py",
+    "sha256": "6d0d40ed5c59fceaeadbd5d332b8f6b305380253b61c1b39c36075a42fba29d6",
+    "definitions": [
+      "AxialMambaBlock",
+      "BoundaryLoss",
+      "ComboLoss",
+      "DiceLoss",
+      "DoubleConv",
+      "FocalLoss",
+      "IoULoss",
+      "MambaBlock",
+      "MambaUNetWithAxialMambaEfficientNetB0",
+      "ModelArgs",
+      "ResidualBlock",
+      "TverskyLoss",
+      "selective_scan"
+    ],
+    "model_factory": "MambaUNetWithAxialMambaEfficientNetB0",
+    "settings_factory": "ModelArgs",
+    "loss_factory": "ComboLoss",
+    "encoder_factory_import": "torchvision.models:efficientnet_b0",
+    "encoder_factory_global": "efficientnet_b0",
+    "evidence_axes": {
+      "height": "axial_mamba.height_mamba",
+      "width": "axial_mamba.width_mamba"
+    },
+    "evidence_stages": {
+      "p2": "x_proj",
+      "p4": "out_proj"
+    }
+  },
+  "backbone_1": {
+    "display_name": "PraNet",
+    "repository": "https://github.com/DengPingFan/PraNet",
+    "revision": "95f12bd4e32ec954b5069654abae7de9473fd1f5",
+    "encoder_file": "lib/Res2Net_v1b.py",
+    "encoder_sha256": "93ba17a7087d3f56f302cd0db2d249cfdcf3ed8b1244cd4efa5bc94baeffdcaa",
+    "encoder_definitions": [
+      "Bottle2neck",
+      "Res2Net",
+      "res2net50_v1b_26w_4s"
+    ],
+    "encoder_factory": "res2net50_v1b_26w_4s",
+    "model_file": "lib/PraNet_Res2Net.py",
+    "model_sha256": "4bc0d9e9f799f0e85902631143030e2fa1e9f585672d449adb4e2e0757fd4c20",
+    "model_definitions": [
+      "BasicConv2d",
+      "RFB_modified",
+      "aggregation",
+      "PraNet"
+    ],
+    "model_factory": "PraNet",
+    "loss_file": "MyTrain.py",
+    "loss_sha256": "85a706e270878bf3849f6ba363b217a7466c968f0b065f02ebaedb495368075d",
+    "loss_definitions": [
+      "structure_loss"
+    ],
+    "loss_factory": "structure_loss"
+  },
+  "backbone_2": {
+    "display_name": "MRANet",
+    "repository": "https://github.com/hpguo1982/MRANet",
+    "matching_retrieval_revision": "9dada235c8f96587588c25eaa288481808b98c56",
+    "historical_revision_recorded": false,
+    "encoder_file": "pvtv2.py",
+    "encoder_sha256": "bad9a96bca9841679b5f7a5a97bf9bbc4239611fb4be6d0ba0783f64e4f9dc8c",
+    "encoder_definitions": [
+      "Mlp",
+      "Attention",
+      "Block",
+      "OverlapPatchEmbed",
+      "PyramidVisionTransformerImpr",
+      "DWConv",
+      "pvt_v2_b3"
+    ],
+    "encoder_factory": "pvt_v2_b3",
+    "encoder_global": "pvtv2",
+    "utility_file": "utils.py",
+    "utility_sha256": "2a1d03d37f7513c2e2eccf40bdf1d7de50468495f85bc1b03458f7da0833e024",
+    "utility_definitions": [
+      "cus_sample"
+    ],
+    "utility_factory": "cus_sample",
+    "model_file": "model.py",
+    "model_sha256": "937a94ed6a64a07258294020790d73555c94b85b73954d3ef597e7616945e7b5",
+    "model_definitions": [
+      "Conv2D",
+      "ResidualBlock",
+      "UpBlock",
+      "RSFM",
+      "SpatialAttention",
+      "ChannelAttention",
+      "RSAB",
+      "BasicConv2d",
+      "CMKD",
+      "ASIM",
+      "MRANet"
+    ],
+    "model_factory": "MRANet",
+    "loss_file": "metrics.py",
+    "loss_sha256": "d79636568e291c7088f53347ceed6c2f0b92d71da9f0721e5d22836df9855c57",
+    "loss_definitions": [
+      "DiceBCELoss"
+    ],
+    "loss_factory": "DiceBCELoss"
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "experiments": {
+    "D_pdc_gcs": {
+      "checkpoint_sha256": "96c6558b22b2dd6c3827ca5aab2c50f26cbaf531e33466a89c1d58ff1509931b",
+      "inference_config_hash": "5836627fb8ad4bc806ee7cf6b59e2b9ec07d5a8ca34b25f7c9510778f647892c",
+      "legacy_source_split_hash": "8c8bc3b881ca7a026f14ed8e0d60075ab2ab766cd198ff1c50778cf14ac423df",
+      "source_files": {
+        "metrics.json": "315ad02b931c6e02ce330bc136997f1495204d234b08ad18df5f01b88c5d73d4",
+        "per_image.csv": "b2c271b186ca9c9468d8215254480355327842b6ee1580865ca9d491a539a416"
+      },
+      "macro_metrics": {
+        "boundary_f1": 0.6363812667114431,
+        "boundary_iou": 0.5381788016843606,
+        "dice": 0.7391671762955712,
+        "iou": 0.663068446039458,
+        "mae": 0.03237152901363495,
+        "precision": 0.8392326422304973,
+        "recall": 0.7504959157546058
+      },
+      "domains": {
+        "ClinicDB": {
+          "negative": 0,
+          "negative_metrics": {},
+          "positive": 612,
+          "positive_metrics": {
+            "boundary_f1": {
+              "mean": 0.7248998450867419,
+              "std": 0.24380209698758354
+            },
+            "boundary_iou": {
+              "mean": 0.619900978048643,
+              "std": 0.27411457127049343
+            },
+            "dice": {
+              "mean": 0.8358034622224975,
+              "std": 0.21274550062487171
+            },
+            "iou": {
+              "mean": 0.760459676182484,
+              "std": 0.23710383703059443
+            },
+            "mae": {
+              "mean": 0.026063856735728145,
+              "std": 0.044541593146692815
+            },
+            "precision": {
+              "mean": 0.905821364454701,
+              "std": 0.1393940248838921
+            },
+            "recall": {
+              "mean": 0.8336205374146491,
+              "std": 0.24864671920116943
+            }
+          },
+          "total": 612
+        },
+        "ColonDB": {
+          "negative": 0,
+          "negative_metrics": {},
+          "positive": 380,
+          "positive_metrics": {
+            "boundary_f1": {
+              "mean": 0.6410220477726112,
+              "std": 0.3038893003427422
+            },
+            "boundary_iou": {
+              "mean": 0.5388993605856632,
+              "std": 0.30693227692794106
+            },
+            "dice": {
+              "mean": 0.7481376323488571,
+              "std": 0.2933572726332277
+            },
+            "iou": {
+              "mean": 0.6656290295963895,
+              "std": 0.29492488801822
+            },
+            "mae": {
+              "mean": 0.03867665341025905,
+              "std": 0.08414021146953676
+            },
+            "precision": {
+              "mean": 0.8466948791194544,
+              "std": 0.2262519371580475
+            },
+            "recall": {
+              "mean": 0.7651530810156646,
+              "std": 0.30887899522395657
+            }
+          },
+          "total": 380
+        },
+        "ETIS": {
+          "negative": 0,
+          "negative_metrics": {},
+          "positive": 196,
+          "positive_metrics": {
+            "boundary_f1": {
+              "mean": 0.6258201697797935,
+              "std": 0.34710546806065773
+            },
+            "boundary_iou": {
+              "mean": 0.541780567000317,
+              "std": 0.3500895066406302
+            },
+            "dice": {
+              "mean": 0.6946245039845101,
+              "std": 0.3513499072119238
+            },
+            "iou": {
+              "mean": 0.6226327578732456,
+              "std": 0.34024997198442847
+            },
+            "mae": {
+              "mean": 0.017289687176139986,
+              "std": 0.026878239552692876
+            },
+            "precision": {
+              "mean": 0.7437500072057263,
+              "std": 0.31261707285592977
+            },
+            "recall": {
+              "mean": 0.752304433697966,
+              "std": 0.3728388481595214
+            }
+          },
+          "total": 196
+        },
+        "PolypGen": {
+          "negative": 62,
+          "negative_metrics": {
+            "false_positive_image_rate": 0.24193548387096775,
+            "fp_8cc_count_mean": 0.3709677419354839,
+            "fp_largest_8cc_area_mean": 1895.0645161290322,
+            "fp_pixels_mean": 1905.3548387096773,
+            "largest_fp_component_max": 21212.0,
+            "largest_fp_component_mean": 1895.0645161290322,
+            "predicted_foreground_fraction_mean": 0.029073407573084676,
+            "serious_fp_count": 6,
+            "serious_fp_rate": 0.0967741935483871,
+            "specificity_mean": 0.9709265924269154
+          },
+          "positive": 211,
+          "positive_metrics": {
+            "boundary_f1": {
+              "mean": 0.5537830042066257,
+              "std": 0.3242484411738265
+            },
+            "boundary_iou": {
+              "mean": 0.4521343011028191,
+              "std": 0.31439200739783524
+            },
+            "dice": {
+              "mean": 0.6781031066264196,
+              "std": 0.34726523070283516
+            },
+            "iou": {
+              "mean": 0.6035523205057134,
+              "std": 0.3495398568693206
+            },
+            "mae": {
+              "mean": 0.047455918732412616,
+              "std": 0.06219564714154005
+            },
+            "precision": {
+              "mean": 0.8606643181421076,
+              "std": 0.26782802577294446
+            },
+            "recall": {
+              "mean": 0.6509056108901436,
+              "std": 0.3696484019609477
+            }
+          },
+          "total": 273
+        }
+      }
+    }
+  }
+}

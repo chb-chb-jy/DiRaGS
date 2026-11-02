@@ -1,0 +1,80 @@
+{
+  "DST": false,
+  "GCS": false,
+  "augmentation": "released_rotate35_hflip_vflip_coarse_dropout; paper_reports_rotation_hflip_vflip",
+  "automatic_mixed_precision": false,
+  "backward_schedule": "sequential_view_backwards; one_optimizer_step_per_original_batch",
+  "candidate": "MRANet+PDC",
+  "declared_deviations": [
+    "unified comparison budget uses exactly 300 epochs; paper reports maximum 150 and released code uses 500",
+    "fixed Kvasir seed42 800/100/100 replaces contradictory paper split",
+    "source-val IoU uses sigmoid(logit)>=0.5; released validation omitted sigmoid",
+    "best checkpoint uses source-val IoU; no target-domain model selection",
+    "full 300 epochs; released early-stop code is omitted for the unified fixed-budget protocol"
+  ],
+  "early_stopping": false,
+  "epochs": 300,
+  "image_size": 256,
+  "inference_minmax_normalization": false,
+  "inference_output": "single_logit",
+  "inference_threshold": 0.5,
+  "latest_checkpoint_every_epochs": 10,
+  "loss": "released_bce_plus_soft_dice_smooth1",
+  "num_workers": 4,
+  "ood_during_training": false,
+  "optimizer": {
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "learning_rate": 0.0001,
+    "name": "Adam",
+    "weight_decay": 0.0
+  },
+  "pdc": {
+    "bias": [
+      -0.08,
+      0.08
+    ],
+    "gain": [
+      0.8,
+      1.2
+    ],
+    "gamma": [
+      0.8,
+      1.2
+    ],
+    "illumination_amplitude": 0.15,
+    "illumination_grid_size": 4,
+    "implementation": "rpp_v2_d1_directional_copula",
+    "input_adapter": "BGR_to_RGB_apply_frozen_D1_then_RGB_to_BGR; no normalization",
+    "region_support": "original_MRANet_augmented_soft_target_gte_0.5; supervision_unchanged",
+    "rng_bn": "replay_clean_forward_rng; restore_clean_forward_rng_and_BN_after_both_backwards",
+    "sample_identity": "source_image_filename",
+    "sampling_epoch": "one_based_training_epoch_minus_one",
+    "soft_mask_kernel": 31,
+    "soft_mask_passes": 2
+  },
+  "physical_batch_size": 16,
+  "preprocessing": "official_opencv_bgr_div255",
+  "protocol": "mranet-pdc-kvasir-seed42-v1",
+  "scheduler": {
+    "cooldown": 0,
+    "epsilon": 1e-08,
+    "factor": 0.1,
+    "minimum_learning_rate": 0.0,
+    "mode": "min",
+    "monitor": "source_val_loss",
+    "name": "ReduceLROnPlateau",
+    "patience": 5,
+    "threshold": 0.0001,
+    "threshold_mode": "rel"
+  },
+  "selection_metric": "kvasir_source_val_iou",
+  "selection_mode": "max",
+  "source_dataset": "Kvasir-SEG",
+  "split_seed": 42,
+  "training_objective": "0.5*(clean_original_MRANet_loss+pseudo_original_MRANet_loss)",
+  "training_seed": 42
+}
