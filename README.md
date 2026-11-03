@@ -12,7 +12,7 @@ The full-model experiment ID `D_pdc_gcs` is retained for checkpoint compatibilit
 
 ![DiRaGS training framework](assets/framework.png)
 
-## Quick start: train and evaluate D
+## Quick start: train and evaluate DiRaGS
 
 Run commands from this repository root using Bash on Linux. The Python package
 is `dirags`; setup variables use the `DIRAGS_` prefix. The recorded training stack
