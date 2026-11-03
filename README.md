@@ -90,15 +90,9 @@ PIL bilinear images, PIL nearest masks, GT >=128, argmax predictions and the
 The standard evaluator retains its original negative-frame statistics.
 
 Read `aggregate.target_mean.dice` and `aggregate.target_mean.iou` from OOD4
-`metrics.json` and multiply by 100. The archived full-model results are:
+`metrics.json` and multiply by 100. 
 
-| Target | Dice (%) | IoU (%) |
-|---|---:|---:|
-| ClinicDB | 83.58 | 76.05 |
-| ColonDB | 74.81 | 66.56 |
-| ETIS | 69.46 | 62.26 |
-| PolypGen positive frames | 67.81 | 60.36 |
-| Macro | 73.92 | 66.31 |
+Compare the four-domain evaluation results with the DiRaGS row in Table 2 of the paper.
 
 Unrounded reference values and checkpoint identities are in
 [`results/dirags_seed42_reference.json`](results/dirags_seed42_reference.json).
